@@ -1,0 +1,189 @@
+.menu-dinamico ul {
+  display: flex;
+  list-style: none;
+  background-color: #111;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.menu-dinamico li {
+  position: relative;
+}
+
+.menu-dinamico a {
+  display: block;
+  padding: 15px 118px; 
+  color: white;
+  text-decoration: none;
+  background-color: #222;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  white-space: nowrap; 
+}
+
+#productos h1 {      
+  font-size: 50px;
+  text-align: left;
+  margin-top: 40px;
+}
+
+.menu-dinamico a:hover {
+  background-color: #333;
+}
+
+/* SUBMENÚ GENERAL */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 50;
+  box-sizing: border-box;
+  min-width: 220px;
+  max-width: 90vw;
+}
+
+.menu-dinamico li:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  background-color: #111;
+  padding: 8px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submenu li:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+.submenu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+/* TEXTOS informativos (acerca de, misión, etc.) */
+.submenu p {
+  padding: 5px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 260px;
+  text-align: justify;
+  margin: 0 auto;
+}
+
+/* EFECTO HOVER IMÁGENES PRODUCTO */
+.producto img {
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Submenú ESPECÍFICO para productos */
+.submenu-productos {
+   width: max-content;
+  min-width: 100%;
+  position: fixed;
+  top: 129.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  box-sizing: border-box;
+  display: none;
+}
+
+.menu-dinamico li:hover .submenu-productos {
+  display: block;
+}
+
+.submenu-productos ul {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px 15px;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+}
+
+/* RESPONSIVE para pantallas pequeñas */
+@media (max-width: 900px) {
+  .menu-dinamico ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu-dinamico a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .submenu {
+    left: auto;
+    transform: none;
+  }
+}
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#preloader h1.animacion-belica {
+  font-size: 60px;
+  color: #d80d0d;
+  font-family: 'Impact', sans-serif;
+  letter-spacing: 5px;
+  animation: parpadeo 1s infinite, zoom 2s ease-in-out infinite alternate;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+/* Cuando el preloader desaparezca */
+#preloader.oculto {
+  opacity: 0;
+  visibility: hidden;
+}
